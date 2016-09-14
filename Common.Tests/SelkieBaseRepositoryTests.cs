@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using JetBrains.Annotations;
@@ -17,35 +17,34 @@ namespace Selkie.Web.MicroServices.Common.Tests
     {
         [Theory]
         [AutoNSubstituteData]
-        public void AddOrUpdate_CallsAdds_ForEntityWithDefaultId([NotNull] ITest test,
-                                                                 [NotNull, Frozen] ITestContext context,
-                                                                 [NotNull] TestSelkieBaseRepository sut)
+        public void AddOrUpdate_CallsAddOrUpdate_ForEntityWithDefaultId([NotNull] ITest test,
+                                                                        [NotNull, Frozen] ITestContext context,
+                                                                        [NotNull] TestSelkieBaseRepository sut)
         {
             // Arrange
-            test.Id.Returns(0);
+            test.Id.Returns(Guid.Empty);
 
             // Act
             sut.Save(test);
 
             // Assert
-            context.Received().Add(test);
+            context.Received().AddOrUpdate(test);
         }
 
         [Theory]
         [AutoNSubstituteData]
-        public void AddOrUpdate_CallsSetStateForSlot_ForExistingEtity([NotNull] ITest test,
-                                                                      [NotNull, Frozen] ITestContext context,
-                                                                      [NotNull] TestSelkieBaseRepository sut)
+        public void AddOrUpdate_CallsAddOrUpdateForSlot_ForExistingEtity([NotNull] ITest test,
+                                                                         [NotNull, Frozen] ITestContext context,
+                                                                         [NotNull] TestSelkieBaseRepository sut)
         {
             // Arrange
-            test.Id.Returns(1);
+            test.Id.Returns(Guid.NewGuid());
 
             // Act
             sut.Save(test);
 
             // Assert
-            context.Received().SetStateForEntity(test,
-                                                 EntityState.Modified);
+            context.Received().AddOrUpdate(test);
         }
 
         [Test]
@@ -69,12 +68,13 @@ namespace Selkie.Web.MicroServices.Common.Tests
         public void FindById_ReturnsDEntity_ForKnownId([NotNull] ITest test)
         {
             // Arrange
+            Guid id = Guid.NewGuid();
             var context = Substitute.For <ITestContext>();
-            context.Find(Arg.Any <int>()).Returns(test);
+            context.Find(id).Returns(test);
             TestSelkieBaseRepository sut = CreateSut(context);
 
             // Act
-            ITest actual = sut.FindById(1);
+            ITest actual = sut.FindById(id);
 
             // Assert
             Assert.AreEqual(test,
@@ -85,12 +85,13 @@ namespace Selkie.Web.MicroServices.Common.Tests
         public void FindById_ReturnsNull_ForUnknownId()
         {
             // Arrange
+            Guid id = Guid.NewGuid();
             var context = Substitute.For <ITestContext>();
-            context.Find(Arg.Any <int>()).Returns(( ITest ) null);
+            context.Find(id).Returns(( ITest ) null);
             TestSelkieBaseRepository sut = CreateSut(context);
 
             // Act
-            ITest actual = sut.FindById(1);
+            ITest actual = sut.FindById(id);
 
             // Assert
             Assert.Null(actual);
@@ -112,8 +113,8 @@ namespace Selkie.Web.MicroServices.Common.Tests
 
         [Theory]
         [AutoNSubstituteData]
-        public void Save_CallsSave_WhenCalled([NotNull, Frozen] ITestContext context,
-                                              [NotNull] TestSelkieBaseRepository sut)
+        public void Save_CallsSaveChanges_WhenCalled([NotNull, Frozen] ITestContext context,
+                                                     [NotNull] TestSelkieBaseRepository sut)
         {
             // Arrange
             // Act
@@ -126,13 +127,13 @@ namespace Selkie.Web.MicroServices.Common.Tests
         private IQueryable <ITest> CreateEntities(CallInfo arg)
         {
             var one = Substitute.For <ITest>();
-            one.Id.Returns(1);
+            one.Id.Returns(Guid.Parse("00000000-0000-0000-0000-000000000001"));
 
             var two = Substitute.For <ITest>();
-            two.Id.Returns(2);
+            two.Id.Returns(Guid.Parse("00000000-0000-0000-0000-000000000002"));
 
             var three = Substitute.For <ITest>();
-            three.Id.Returns(3);
+            three.Id.Returns(Guid.Parse("00000000-0000-0000-0000-000000000003"));
 
             var list = new[]
                        {

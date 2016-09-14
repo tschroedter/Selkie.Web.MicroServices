@@ -119,7 +119,7 @@ namespace Selkie.Web.MicroServices.ColonySettings.Integration.Tests.Nancy
                                              },
                             FixedStartNode = 1,
                             IsFixedStartNode = true,
-                            ColonyId = 1
+                            ColonyId = Guid.Parse("00000000-0000-0000-0000-000000000001")
                         };
 
             return model;
@@ -152,7 +152,7 @@ namespace Selkie.Web.MicroServices.ColonySettings.Integration.Tests.Nancy
                                       };
             expected.FixedStartNode = 2;
             expected.IsFixedStartNode = false;
-            expected.ColonyId = 123;
+            expected.ColonyId = Guid.Parse("00000000-0000-0000-0000-000000000123");
 
             // When
             BrowserResponse result = browser.Put(BaseUrl,
@@ -260,7 +260,7 @@ namespace Selkie.Web.MicroServices.ColonySettings.Integration.Tests.Nancy
                                       };
             expected.FixedStartNode = 2;
             expected.IsFixedStartNode = false;
-            expected.ColonyId = 123;
+            expected.ColonyId = Guid.Parse("00000000-0000-0000-0000-000000000123");
 
             // When
             BrowserResponse result = browser.Put(BaseUrl,

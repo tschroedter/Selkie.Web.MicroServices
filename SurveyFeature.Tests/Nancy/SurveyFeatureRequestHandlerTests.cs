@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using NSubstitute;
 using NUnit.Framework;
 using Selkie.Web.MicroServices.Common.Tests.Extensions.Nancy;
@@ -13,8 +14,6 @@ namespace Selkie.Web.MicroServices.SurveyFeature.Tests.Nancy
         : RequestHandlerBaseTests
               <ISurveyFeatureForResponse, ISurveyFeatureInformationFinder, ISurveyFeatureRequestHandler>
     {
-        private static int NextIdForResponse;
-
         protected override ISurveyFeatureInformationFinder CreateFinder()
         {
             return Substitute.For <ISurveyFeatureInformationFinder>();
@@ -29,7 +28,7 @@ namespace Selkie.Web.MicroServices.SurveyFeature.Tests.Nancy
         {
             return new SurveyFeatureForResponse
                    {
-                       ColonyId = NextIdForResponse++
+                       ColonyId = Guid.NewGuid()
                    };
         }
     }

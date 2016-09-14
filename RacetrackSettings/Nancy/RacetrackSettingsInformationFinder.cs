@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
 using Selkie.Web.MicroServices.RacetrackSettings.Interfaces.DataAccess;
@@ -17,7 +18,7 @@ namespace Selkie.Web.MicroServices.RacetrackSettings.Nancy
 
         private readonly IRacetrackSettingsRepository m_Repository;
 
-        public IRacetrackSettingsForResponse FindById(int id)
+        public IRacetrackSettingsForResponse FindById(Guid id)
         {
             IRacetrackSettings entity = m_Repository.FindById(id);
 
@@ -52,7 +53,7 @@ namespace Selkie.Web.MicroServices.RacetrackSettings.Nancy
                    };
         }
 
-        public IRacetrackSettingsForResponse Delete(int id)
+        public IRacetrackSettingsForResponse Delete(Guid id)
         {
             IRacetrackSettings entity = m_Repository.FindById(id);
 

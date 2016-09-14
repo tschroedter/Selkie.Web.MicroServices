@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Selkie.Web.MicroServices.RacetrackSettings.Interfaces.Nancy;
 
 namespace Selkie.Web.MicroServices.RacetrackSettings.Nancy
@@ -16,19 +17,19 @@ namespace Selkie.Web.MicroServices.RacetrackSettings.Nancy
 
         internal const double DefaultTurnRadius = 30.0;
 
-        public int ColonyId { get; set; }
+        public Guid ColonyId { get; set; }
 
         public bool IsPortTurnAllowed { get; set; }
 
         public bool IsStarboardTurnAllowed { get; set; }
 
-        public int RacetrackSettingsId { get; set; }
+        public Guid RacetrackSettingsId { get; set; }
 
         public double TurnRadiusForPort { get; set; }
 
         public double TurnRadiusForStarboard { get; set; }
 
-        public int Id
+        public Guid Id
         {
             get
             {

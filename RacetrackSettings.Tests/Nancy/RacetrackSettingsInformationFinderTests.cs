@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
 using NSubstitute;
@@ -16,9 +17,6 @@ namespace Selkie.Web.MicroServices.RacetrackSettings.Tests.Nancy
               <IRacetrackSettingsForResponse, IRacetrackSettings, IRacetrackSettingsRepository,
               IRacetrackSettingsInformationFinder>
     {
-        private static int NextIdForResponse;
-        private static int NextIdForEntity;
-
         protected override IRacetrackSettingsRepository CreateRepository()
         {
             return Substitute.For <IRacetrackSettingsRepository>();
@@ -33,7 +31,7 @@ namespace Selkie.Web.MicroServices.RacetrackSettings.Tests.Nancy
         {
             return new RacetrackSettingsForResponse
                    {
-                       RacetrackSettingsId = NextIdForResponse++
+                       RacetrackSettingsId = Guid.NewGuid()
                    };
         }
 
@@ -41,7 +39,7 @@ namespace Selkie.Web.MicroServices.RacetrackSettings.Tests.Nancy
         {
             return new DataAccess.RacetrackSettings
                    {
-                       RacetrackSettingsId = NextIdForEntity++
+                       RacetrackSettingsId = Guid.NewGuid()
                    };
         }
 

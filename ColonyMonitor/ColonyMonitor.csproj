@@ -7,8 +7,8 @@
     <ProjectGuid>{BF1DC00C-9F7C-415D-95CE-CE1ECB9BF17D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Selkie.MicroServices.ColonyMonitor</RootNamespace>
-    <AssemblyName>Selkie.MicroServices.ColonyMonitor</AssemblyName>
+    <RootNamespace>Selkie.Web.MicroServices.ColonyMonitor</RootNamespace>
+    <AssemblyName>Selkie.Web.MicroServices.ColonyMonitor</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -54,16 +54,16 @@
       <HintPath>..\packages\EasyNetQ.Management.Client.0.47.12.38\lib\net40\EasyNetQ.Management.Client.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="JetBrains.Annotations, Version=10.1.4.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
-      <HintPath>..\packages\JetBrains.Annotations.10.1.4\lib\net20\JetBrains.Annotations.dll</HintPath>
+    <Reference Include="JetBrains.Annotations, Version=10.1.5.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.10.1.5\lib\net\JetBrains.Annotations.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="NLog, Version=4.1.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
-      <HintPath>..\packages\NLog.4.1.0\lib\net45\NLog.dll</HintPath>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.3.6\lib\net45\NLog.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="RabbitMQ.Client, Version=3.5.4.0, Culture=neutral, PublicKeyToken=89e7d7c5feba84ce, processorArchitecture=MSIL">
@@ -74,20 +74,28 @@
       <HintPath>..\packages\RestSharp.105.2.3\lib\net45\RestSharp.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Selkie.Aop, Version=0.7.17.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Selkie.Aop.0.7.17\lib\net45\Selkie.Aop.dll</HintPath>
+    <Reference Include="Selkie.Aop, Version=0.7.22.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selkie.Aop.0.7.22.0\lib\net45\Selkie.Aop.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Selkie.EasyNetQ, Version=0.7.8.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Selkie.EasyNetQ.0.7.8\lib\net45\Selkie.EasyNetQ.dll</HintPath>
+    <Reference Include="Selkie.EasyNetQ, Version=0.7.13.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selkie.EasyNetQ.0.7.13\lib\net45\Selkie.EasyNetQ.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Selkie.Services.Aco.Common, Version=0.7.12.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Selkie.Services.Aco.Common.0.7.12.0\lib\net45\Selkie.Services.Aco.Common.dll</HintPath>
+    <Reference Include="Selkie.Services.Aco.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selkie.Services.Aco.Common.0.7.16\lib\net45\Selkie.Services.Aco.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Selkie.Windsor, Version=0.7.39.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Selkie.Windsor.0.7.39\lib\net45\Selkie.Windsor.dll</HintPath>
+    <Reference Include="Selkie.Services.Common.Dto, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selkie.Services.Common.Dto.0.7.8\lib\net45\Selkie.Services.Common.Dto.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Selkie.Services.Racetracks.Common, Version=0.7.10.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selkie.Services.Racetracks.Common.0.7.10.0\lib\net45\Selkie.Services.Racetracks.Common.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Selkie.Windsor, Version=0.7.41.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selkie.Windsor.0.7.41\lib\net45\Selkie.Windsor.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -101,14 +109,41 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BaseUrlReader.cs" />
+    <Compile Include="Dtos\BestTrailDto.cs" />
     <Compile Include="Dtos\ColonyDto.cs" />
     <Compile Include="Dtos\ColonyProgress.cs" />
     <Compile Include="Dtos\ColonySettingsDto.cs" />
-    <Compile Include="Entities\ColonySettingsManager.cs" />
-    <Compile Include="Entities\ColonyManager.cs" />
-    <Compile Include="Dtos\IColonySettingsManager.cs" />
-    <Compile Include="Interfaces\ISelkieRestClient.cs" />
-    <Compile Include="SelkieRestClient.cs" />
+    <Compile Include="Dtos\PointDto.cs" />
+    <Compile Include="Dtos\RacetrackSettingsDto.cs" />
+    <Compile Include="Dtos\SurveyFeatureDto.cs" />
+    <Compile Include="Entities\Crud\BaseCrud.cs" />
+    <Compile Include="Entities\Crud\CrudColonySettingsDto.cs" />
+    <Compile Include="Entities\Crud\CrudRacetrackSettingsDto.cs" />
+    <Compile Include="Entities\Crud\CrudSurveyFeatureDto.cs" />
+    <Compile Include="Entities\Crud\IBaseCrud.cs" />
+    <Compile Include="Entities\Crud\IColonySettingsDto.cs" />
+    <Compile Include="Entities\Crud\ICrudColonySettingsDto.cs" />
+    <Compile Include="Entities\Crud\ICrudRacetrackSettingsDto.cs" />
+    <Compile Include="Entities\Crud\ICrudSurveyFeatureDto.cs" />
+    <Compile Include="Entities\Crud\Rest\ISelkieRestClient.cs" />
+    <Compile Include="Entities\Crud\Rest\ISelkieRestClientFactory.cs" />
+    <Compile Include="Entities\Manager\BestTrailManager.cs" />
+    <Compile Include="Entities\Manager\ColonySettingsManager.cs" />
+    <Compile Include="Entities\Manager\ColonyManager.cs" />
+    <Compile Include="Entities\Crud\CrudBestTrailDto.cs" />
+    <Compile Include="Entities\Crud\CrudColonyDto.cs" />
+    <Compile Include="Entities\Manager\IBestTrailManager.cs" />
+    <Compile Include="Entities\Manager\IColonySettingsManager.cs" />
+    <Compile Include="Entities\Crud\ICrudBestTrailDto.cs" />
+    <Compile Include="Entities\Crud\ICrudColonyDto.cs" />
+    <Compile Include="Entities\Manager\IRacetrackSettingsManager.cs" />
+    <Compile Include="Entities\Manager\ISurveyFeaturesManager.cs" />
+    <Compile Include="Entities\Manager\RacetrackSettingsManager.cs" />
+    <Compile Include="Entities\Manager\SurveyFeaturesManager.cs" />
+    <Compile Include="Entities\Crud\Rest\SelkieRestClient.cs" />
+    <Compile Include="Handlers\BestTrailHandler.cs" />
+    <Compile Include="Handlers\CostMatrixCalculateHandler.cs" />
+    <Compile Include="Handlers\CreatedColonyHandler.cs" />
     <Compile Include="Handlers\CreateColonyHandler.cs" />
     <Compile Include="Interfaces\Handlers\IColonyManager.cs" />
     <Compile Include="Interfaces\IBaseUrlReader.cs" />

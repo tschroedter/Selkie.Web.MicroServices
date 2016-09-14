@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using System;
+using JetBrains.Annotations;
 using Nancy;
 using Nancy.ModelBinding;
 using Selkie.Web.MicroServices.SurveyFeature.Interfaces.Nancy;
@@ -11,13 +12,13 @@ namespace Selkie.Web.MicroServices.SurveyFeature.Nancy
         : NancyModule
     {
         public SurveyFeatureModule([NotNull] ISurveyFeatureRequestHandler handler)
-            : base("/surveyfeature") // todo rename to surveyfeatures (s), check others as well
+            : base("/surveyfeatures")
         {
             Get [ "/" ] =
                 parameters => handler.List();
 
-            Get [ "/{id:int}" ] =
-                parameters => handler.FindById(( int ) parameters.id);
+            Get [ "/{id:Guid}" ] =
+                parameters => handler.FindById(( Guid ) parameters.id);
 
             Post [ "/" ] =
                 parameters => handler.Save(this.Bind <SurveyFeatureForResponse>());
@@ -25,8 +26,8 @@ namespace Selkie.Web.MicroServices.SurveyFeature.Nancy
             Put [ "/" ] =
                 parameters => handler.Save(this.Bind <SurveyFeatureForResponse>());
 
-            Delete [ "/{id:int}" ] =
-                parameters => handler.DeleteById(( int ) parameters.id);
+            Delete [ "/{id:Guid}" ] =
+                parameters => handler.DeleteById(( Guid ) parameters.id);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Selkie.Web.MicroServices.ColonySettings.Interfaces.Nancy;
 
 namespace Selkie.Web.MicroServices.ColonySettings.Nancy
@@ -13,7 +14,7 @@ namespace Selkie.Web.MicroServices.ColonySettings.Nancy
             IsFixedStartNode = false;
         }
 
-        public int Id
+        public Guid Id
         {
             get
             {
@@ -29,7 +30,7 @@ namespace Selkie.Web.MicroServices.ColonySettings.Nancy
         public int[] CostPerFeature { get; set; }
         public int FixedStartNode { get; set; }
         public bool IsFixedStartNode { get; set; }
-        public int ColonyId { get; set; }
-        public int ColonySettingsId { get; set; }
+        public Guid ColonyId { get; set; }
+        public Guid ColonySettingsId { get; set; }
     }
 }

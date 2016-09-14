@@ -1,4 +1,4 @@
-namespace Selkie.MicroServices.ColonyMonitor.Interfaces
+namespace Selkie.Web.MicroServices.ColonyMonitor.Interfaces
 {
     public interface IBaseUrlReader
     {

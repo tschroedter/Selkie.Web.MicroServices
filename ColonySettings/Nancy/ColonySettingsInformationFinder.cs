@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
 using Selkie.Web.MicroServices.ColonySettings.Interfaces.DataAccess;
@@ -17,7 +18,7 @@ namespace Selkie.Web.MicroServices.ColonySettings.Nancy
 
         private readonly IColonySettingsRepository m_Repository;
 
-        public IColonySettingsForResponse FindById(int id)
+        public IColonySettingsForResponse FindById(Guid id)
         {
             IColonySettings colony = m_Repository.FindById(id);
 
@@ -52,7 +53,7 @@ namespace Selkie.Web.MicroServices.ColonySettings.Nancy
                    };
         }
 
-        public IColonySettingsForResponse Delete(int id)
+        public IColonySettingsForResponse Delete(Guid id)
         {
             IColonySettings colony = m_Repository.FindById(id);
 

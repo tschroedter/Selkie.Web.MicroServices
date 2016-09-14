@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace Selkie.Web.MicroServices.Common.Tests.Extensions.Nancy
         where TRepository : class, IRepository <TEntity>
         where TFinder : IInformationFinder <TResponse>
     {
-        private const int DoesNotMatter = -1;
+        private readonly Guid DoesNotMatter = Guid.Parse("00000000-0000-0000-0000-000000000001");
 
         protected abstract TEntity CreateEntity();
 
@@ -51,7 +52,7 @@ namespace Selkie.Web.MicroServices.Common.Tests.Extensions.Nancy
             // Arrange
             TEntity entity = CreateEntity();
             TRepository repository = CreateRepository();
-            repository.FindById(-1).ReturnsForAnyArgs(entity);
+            repository.FindById(Guid.NewGuid()).ReturnsForAnyArgs(entity);
             TFinder sut = CreateSut(repository);
 
             // Act
@@ -83,7 +84,7 @@ namespace Selkie.Web.MicroServices.Common.Tests.Extensions.Nancy
         {
             // Arrange
             TRepository repository = CreateRepository();
-            repository.FindById(-1).ReturnsForAnyArgs(null);
+            repository.FindById(Guid.NewGuid()).ReturnsForAnyArgs(null);
             TFinder sut = CreateSut(repository);
 
             // Act
@@ -114,12 +115,13 @@ namespace Selkie.Web.MicroServices.Common.Tests.Extensions.Nancy
         public void FindById_ReturnsNull_ForNotExistingId()
         {
             // Arrange
+            Guid id = Guid.NewGuid();
             TRepository repository = CreateRepository();
-            repository.FindById(-1).Returns(null);
+            repository.FindById(id).Returns(null);
             TFinder sut = CreateSut(repository);
 
             // Act
-            TResponse actual = sut.FindById(-1);
+            TResponse actual = sut.FindById(id);
 
             // Assert
             Assert.Null(actual);

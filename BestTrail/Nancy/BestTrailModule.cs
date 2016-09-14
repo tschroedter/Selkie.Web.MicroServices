@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using System;
+using JetBrains.Annotations;
 using Nancy;
 using Nancy.ModelBinding;
 using Selkie.Web.MicroServices.BestTrail.Interfaces.Nancy;
@@ -11,13 +12,13 @@ namespace Selkie.Web.MicroServices.BestTrail.Nancy
         : NancyModule
     {
         public BestTrailModule([NotNull] IBestTrailRequestHandler handler)
-            : base("/besttrail")
+            : base("/besttrails")
         {
             Get [ "/" ] =
                 parameters => handler.List();
 
-            Get [ "/{id:int}" ] =
-                parameters => handler.FindById(( int ) parameters.id);
+            Get [ "/{id:Guid}" ] =
+                parameters => handler.FindById(( Guid ) parameters.id);
 
             Post [ "/" ] =
                 parameters => handler.Save(this.Bind <BestTrailForResponse>());
@@ -25,8 +26,8 @@ namespace Selkie.Web.MicroServices.BestTrail.Nancy
             Put [ "/" ] =
                 parameters => handler.Save(this.Bind <BestTrailForResponse>());
 
-            Delete [ "/{id:int}" ] =
-                parameters => handler.DeleteById(( int ) parameters.id);
+            Delete [ "/{id:Guid}" ] =
+                parameters => handler.DeleteById(( Guid ) parameters.id);
         }
     }
 }

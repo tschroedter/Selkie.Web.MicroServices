@@ -1,3 +1,4 @@
+using System;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace Selkie.Web.MicroServices.Common.Tests.Extensions.Nancy
         where TFinder : IInformationFinder <TResponse>
         where THandler : IRequestHandler <TResponse>
     {
-        private const int DoesNotMatter = -1;
+        private readonly Guid DoesNotMatter = Guid.Parse("00000000-0000-0000-0000-000000000001");
 
         [Theory]
         [AutoNSubstituteData]

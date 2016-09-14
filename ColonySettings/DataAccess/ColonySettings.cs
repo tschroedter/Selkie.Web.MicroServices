@@ -108,13 +108,13 @@ namespace Selkie.Web.MicroServices.ColonySettings.DataAccess
         public bool IsFixedStartNode { get; set; }
 
         [Required]
-        public int ColonyId { get; set; }
+        public Guid ColonyId { get; set; }
 
         [Key]
-        public int ColonySettingsId { get; set; }
+        public Guid ColonySettingsId { get; set; }
 
         [NotMapped]
-        public int Id
+        public Guid Id
         {
             get
             {

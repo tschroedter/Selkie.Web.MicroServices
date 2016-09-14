@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
@@ -27,7 +28,7 @@ namespace Selkie.Web.MicroServices.SurveyFeature.DataAccess
         public double AngleToXAxisAtStartPoint { get; set; }
 
         [Required]
-        public int ColonyId { get; set; }
+        public Guid ColonyId { get; set; }
 
         [Required]
         public double EndPointX { get; set; }
@@ -52,10 +53,10 @@ namespace Selkie.Web.MicroServices.SurveyFeature.DataAccess
         public double StartPointY { get; set; }
 
         [Key]
-        public int SurveyFeatureId { get; set; }
+        public Guid SurveyFeatureId { get; set; }
 
         [NotMapped]
-        public int Id
+        public Guid Id
         {
             get
             {

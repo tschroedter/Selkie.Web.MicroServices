@@ -1,5 +1,8 @@
-﻿namespace Selkie.Web.MicroServices.Colony.SelfHosting
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Selkie.Web.MicroServices.Colony.SelfHosting
 {
+    [ExcludeFromCodeCoverage]
     public class Service
     {
         public bool Start()

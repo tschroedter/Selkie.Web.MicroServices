@@ -28,13 +28,13 @@ namespace Selkie.Web.MicroServices.BestTrail.DataAccess
         public double Alpha { get; set; }
 
         [Key]
-        public int BestTrailId { get; set; }
+        public Guid BestTrailId { get; set; }
 
         [Required]
         public double Beta { get; set; }
 
         [Required]
-        public int ColonyId { get; set; }
+        public Guid ColonyId { get; set; }
 
         [Required]
         public double Gamma { get; set; }
@@ -71,7 +71,7 @@ namespace Selkie.Web.MicroServices.BestTrail.DataAccess
         public string Type { get; set; }
 
         [NotMapped]
-        public int Id
+        public Guid Id
         {
             get
             {

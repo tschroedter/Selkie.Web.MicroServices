@@ -24,7 +24,7 @@ namespace Selkie.Web.MicroServices.Colony.Nancy
         private readonly ISelkieLogger m_Logger;
         private readonly IColonyRepository m_Repository;
 
-        public IColonyForResponse FindById(int id)
+        public IColonyForResponse FindById(Guid id)
         {
             IColony colony = m_Repository.FindById(id);
 
@@ -56,7 +56,7 @@ namespace Selkie.Web.MicroServices.Colony.Nancy
                    };
         }
 
-        public IColonyForResponse Delete(int id)
+        public IColonyForResponse Delete(Guid id)
         {
             IColony colony = m_Repository.FindById(id);
 

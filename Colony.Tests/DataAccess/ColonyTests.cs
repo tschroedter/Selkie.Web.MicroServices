@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using NUnit.Framework;
 using Selkie.Web.MicroServices.Colony.DataAccess;
 
@@ -36,13 +37,14 @@ namespace Selkie.Web.MicroServices.Colony.Tests.DataAccess
         public void Id_ReturnsBestTrailId_WhenCalled()
         {
             // Arrange
+            Guid expected = Guid.Parse("00000000-0000-0000-0000-000000000123");
             var sut = new Colony.DataAccess.Colony();
 
             // Act
-            sut.ColonyId = 123;
+            sut.ColonyId = expected;
 
             // Assert
-            Assert.AreEqual(123,
+            Assert.AreEqual(expected,
                             sut.Id);
         }
 
@@ -50,13 +52,14 @@ namespace Selkie.Web.MicroServices.Colony.Tests.DataAccess
         public void Id_SetsBestTrailId_WhenCalled()
         {
             // Arrange
+            Guid expected = Guid.Parse("00000000-0000-0000-0000-000000000123");
             var sut = new Colony.DataAccess.Colony();
 
             // Act
-            sut.Id = 123;
+            sut.Id = expected;
 
             // Assert
-            Assert.AreEqual(123,
+            Assert.AreEqual(expected,
                             sut.ColonyId);
         }
     }

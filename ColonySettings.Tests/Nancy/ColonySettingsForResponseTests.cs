@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using NUnit.Framework;
 using Selkie.Web.MicroServices.ColonySettings.Nancy;
 
@@ -16,7 +17,7 @@ namespace Selkie.Web.MicroServices.ColonySettings.Tests.Nancy
             var sut = new ColonySettingsForResponse();
 
             // Assert
-            Assert.AreEqual(0,
+            Assert.AreEqual(Guid.Empty,
                             sut.ColonyId);
         }
 
@@ -28,7 +29,7 @@ namespace Selkie.Web.MicroServices.ColonySettings.Tests.Nancy
             var sut = new ColonySettingsForResponse();
 
             // Assert
-            Assert.AreEqual(0,
+            Assert.AreEqual(Guid.Empty,
                             sut.ColonySettingsId);
         }
 
@@ -81,13 +82,14 @@ namespace Selkie.Web.MicroServices.ColonySettings.Tests.Nancy
         public void Id_ReturnsColonySettingsId_WhenCalled()
         {
             // Arrange
+            Guid expected = Guid.Parse("00000000-0000-0000-0000-000000000123");
             var sut = new ColonySettingsForResponse();
 
             // Act
-            sut.ColonySettingsId = 123;
+            sut.ColonySettingsId = expected;
 
             // Assert
-            Assert.AreEqual(123,
+            Assert.AreEqual(expected,
                             sut.Id);
         }
 
@@ -95,13 +97,14 @@ namespace Selkie.Web.MicroServices.ColonySettings.Tests.Nancy
         public void Id_SetsColonySettingsId_WhenCalled()
         {
             // Arrange
+            Guid expected = Guid.Parse("00000000-0000-0000-0000-000000000123");
             var sut = new ColonySettingsForResponse();
 
             // Act
-            sut.Id = 123;
+            sut.Id = expected;
 
             // Assert
-            Assert.AreEqual(123,
+            Assert.AreEqual(expected,
                             sut.ColonySettingsId);
         }
     }

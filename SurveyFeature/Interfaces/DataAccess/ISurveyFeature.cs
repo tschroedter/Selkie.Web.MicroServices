@@ -1,3 +1,4 @@
+using System;
 using Selkie.Web.MicroServices.Common.Interfaces;
 
 namespace Selkie.Web.MicroServices.SurveyFeature.Interfaces.DataAccess
@@ -6,7 +7,7 @@ namespace Selkie.Web.MicroServices.SurveyFeature.Interfaces.DataAccess
     {
         double AngleToXAxisAtEndPoint { get; set; }
         double AngleToXAxisAtStartPoint { get; set; }
-        int ColonyId { get; set; }
+        Guid ColonyId { get; set; }
         double EndPointX { get; set; }
         double EndPointY { get; set; }
         bool IsUnknown { get; set; }
@@ -14,6 +15,6 @@ namespace Selkie.Web.MicroServices.SurveyFeature.Interfaces.DataAccess
         string RunDirection { get; set; }
         double StartPointX { get; set; }
         double StartPointY { get; set; }
-        int SurveyFeatureId { get; set; }
+        Guid SurveyFeatureId { get; set; }
     }
 }

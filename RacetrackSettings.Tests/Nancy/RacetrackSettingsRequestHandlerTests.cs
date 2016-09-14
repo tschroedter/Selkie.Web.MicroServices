@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using NSubstitute;
 using NUnit.Framework;
 using Selkie.Web.MicroServices.Common.Tests.Extensions.Nancy;
@@ -13,8 +14,6 @@ namespace Selkie.Web.MicroServices.RacetrackSettings.Tests.Nancy
         : RequestHandlerBaseTests
               <IRacetrackSettingsForResponse, IRacetrackSettingsInformationFinder, IRacetrackSettingsRequestHandler>
     {
-        private static int NextIdForResponse;
-
         protected override IRacetrackSettingsInformationFinder CreateFinder()
         {
             return Substitute.For <IRacetrackSettingsInformationFinder>();
@@ -29,7 +28,7 @@ namespace Selkie.Web.MicroServices.RacetrackSettings.Tests.Nancy
         {
             return new RacetrackSettingsForResponse
                    {
-                       ColonyId = NextIdForResponse++
+                       ColonyId = Guid.NewGuid()
                    };
         }
     }

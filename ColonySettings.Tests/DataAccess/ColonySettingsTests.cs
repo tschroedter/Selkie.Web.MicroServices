@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics.CodeAnalysis;
 using NUnit.Framework;
 
@@ -107,13 +108,14 @@ namespace Selkie.Web.MicroServices.ColonySettings.Tests.DataAccess
         public void Id_ReturnsColonySettingsId_WhenCalled()
         {
             // Arrange
+            Guid expected = Guid.Parse("00000000-0000-0000-0000-000000000123");
             var sut = new ColonySettings.DataAccess.ColonySettings();
 
             // Act
-            sut.ColonySettingsId = 123;
+            sut.ColonySettingsId = expected;
 
             // Assert
-            Assert.AreEqual(123,
+            Assert.AreEqual(expected,
                             sut.Id);
         }
 
@@ -121,13 +123,14 @@ namespace Selkie.Web.MicroServices.ColonySettings.Tests.DataAccess
         public void Id_SetsColonySettingsId_WhenCalled()
         {
             // Arrange
+            Guid expected = Guid.Parse("00000000-0000-0000-0000-000000000123");
             var sut = new ColonySettings.DataAccess.ColonySettings();
 
             // Act
-            sut.Id = 123;
+            sut.Id = expected;
 
             // Assert
-            Assert.AreEqual(123,
+            Assert.AreEqual(expected,
                             sut.ColonySettingsId);
         }
     }

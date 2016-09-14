@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using Nancy;
@@ -24,7 +25,7 @@ namespace Selkie.Web.MicroServices.RacetrackSettings.Nancy
             return AsJson(responses);
         }
 
-        public Response FindById(int id)
+        public Response FindById(Guid id)
         {
             IRacetrackSettingsForResponse response = m_ColonyInformationFinder.FindById(id);
 
@@ -40,7 +41,7 @@ namespace Selkie.Web.MicroServices.RacetrackSettings.Nancy
             return AsJson(saved);
         }
 
-        public Response DeleteById(int id)
+        public Response DeleteById(Guid id)
         {
             IRacetrackSettingsForResponse response = m_ColonyInformationFinder.Delete(id);
 

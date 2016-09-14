@@ -1,7 +1,9 @@
-﻿namespace Selkie.Web.MicroServices.Common.Interfaces
+﻿using System;
+
+namespace Selkie.Web.MicroServices.Common.Interfaces
 {
     public interface IEntity
     {
-        int Id { get; set; }
+        Guid Id { get; set; }
     }
 }

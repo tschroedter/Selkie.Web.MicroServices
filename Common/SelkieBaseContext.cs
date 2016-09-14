@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Castle.Core;
@@ -33,6 +34,13 @@ namespace Selkie.Web.MicroServices.Common
             SelkieDbSet.Add(instance);
         }
 
+        public void AddOrUpdate(TInterface entity)
+        {
+            TDbSet instance = ConvertToInstance(entity);
+
+            SelkieDbSet.AddOrUpdate(instance);
+        }
+
         public IQueryable <TInterface> All()
         {
             var list = new List <TInterface>();
@@ -48,7 +56,7 @@ namespace Selkie.Web.MicroServices.Common
             return list.AsQueryable();
         }
 
-        public TInterface Find(int id)
+        public TInterface Find(Guid id)
         {
             TDbSet dbSet = SelkieDbSet.Find(id);
 

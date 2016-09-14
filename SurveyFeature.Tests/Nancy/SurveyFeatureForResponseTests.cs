@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using NUnit.Framework;
 using Selkie.Web.MicroServices.SurveyFeature.Nancy;
 
@@ -72,13 +73,14 @@ namespace Selkie.Web.MicroServices.BestTrail.Tests.Nancy
         public void Id_ReturnsBestTrailId_WhenCalled()
         {
             // Arrange
+            Guid expected = Guid.Parse("00000000-0000-0000-0000-000000000123");
             var sut = new SurveyFeatureForResponse();
 
             // Act
-            sut.SurveyFeatureId = 123;
+            sut.SurveyFeatureId = expected;
 
             // Assert
-            Assert.AreEqual(123,
+            Assert.AreEqual(expected,
                             sut.Id);
         }
 
@@ -86,13 +88,14 @@ namespace Selkie.Web.MicroServices.BestTrail.Tests.Nancy
         public void Id_SetsBestTrailId_WhenCalled()
         {
             // Arrange
+            Guid expected = Guid.Parse("00000000-0000-0000-0000-000000000123");
             var sut = new SurveyFeatureForResponse();
 
             // Act
-            sut.Id = 123;
+            sut.Id = expected;
 
             // Assert
-            Assert.AreEqual(123,
+            Assert.AreEqual(expected,
                             sut.SurveyFeatureId);
         }
     }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using JetBrains.Annotations;
 using Selkie.Web.MicroServices.Common.Interfaces.Nancy;
@@ -7,9 +8,9 @@ namespace Selkie.Web.MicroServices.BestTrail.Interfaces.Nancy
     public interface IBestTrailForResponse : IResponse
     {
         double Alpha { get; set; }
-        int BestTrailId { get; set; }
+        Guid BestTrailId { get; set; }
         double Beta { get; set; }
-        int ColonyId { get; set; }
+        Guid ColonyId { get; set; }
         double Gamma { get; set; }
         int Iteration { get; set; }
         double Length { get; set; }

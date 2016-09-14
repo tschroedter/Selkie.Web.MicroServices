@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Selkie.Web.MicroServices.Colony.Interfaces.Nancy;
 
 namespace Selkie.Web.MicroServices.Colony.Nancy
@@ -8,16 +9,16 @@ namespace Selkie.Web.MicroServices.Colony.Nancy
     {
         public ColonyForResponse()
         {
-            ColonyId = 0;
+            ColonyId = Guid.Empty;
             Description = string.Empty;
             Status = "Unknown";
         }
 
-        public int ColonyId { get; set; }
+        public Guid ColonyId { get; set; }
         public string Description { get; set; }
         public string Status { get; set; }
 
-        public int Id
+        public Guid Id
         {
             get
             {

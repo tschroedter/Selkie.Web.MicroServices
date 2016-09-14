@@ -25,7 +25,7 @@ namespace Selkie.Web.MicroServices.SurveyFeature.Integration.Tests.Nancy
             DeleteAllItems();
         }
 
-        private const string BasePath = "/surveyfeature/";
+        private const string BasePath = "/surveyfeatures/";
 
         private static readonly ISurveyFeatureRepository m_Repository =
             new SurveyFeatureRepository(new SurveyFeatureContext());
@@ -114,7 +114,7 @@ namespace Selkie.Web.MicroServices.SurveyFeature.Integration.Tests.Nancy
                         {
                             AngleToXAxisAtEndPoint = 1.0,
                             AngleToXAxisAtStartPoint = 2.0,
-                            ColonyId = 3,
+                            ColonyId = Guid.Parse("00000000-0000-0000-0000-000000000003"),
                             EndPointX = 4.0,
                             EndPointY = 5,
                             IsUnknown = false,
@@ -136,7 +136,7 @@ namespace Selkie.Web.MicroServices.SurveyFeature.Integration.Tests.Nancy
 
             expected.AngleToXAxisAtEndPoint = 11.0;
             expected.AngleToXAxisAtStartPoint = 22.0;
-            expected.ColonyId = 33;
+            expected.ColonyId = Guid.Parse("00000000-0000-0000-0000-000000000033");
             expected.EndPointX = 44.0;
             expected.EndPointY = 55;
             expected.IsUnknown = false;
@@ -233,7 +233,7 @@ namespace Selkie.Web.MicroServices.SurveyFeature.Integration.Tests.Nancy
 
             expected.AngleToXAxisAtEndPoint = 1.0;
             expected.AngleToXAxisAtStartPoint = 2.0;
-            expected.ColonyId = 3;
+            expected.ColonyId = Guid.Parse("00000000-0000-0000-0000-000000000003");
             expected.EndPointX = 4.0;
             expected.EndPointY = 5;
             expected.IsUnknown = true;

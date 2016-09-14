@@ -101,7 +101,7 @@ namespace Selkie.Web.MicroServices.RacetrackSettings.Integration.Tests.Nancy
         {
             var model = new RacetrackSettingsForResponse
                         {
-                            ColonyId = 1,
+                            ColonyId = Guid.Parse("00000000-0000-0000-0000-000000000001"),
                             IsPortTurnAllowed = true,
                             IsStarboardTurnAllowed = false,
                             TurnRadiusForPort = 123.0,
@@ -118,7 +118,7 @@ namespace Selkie.Web.MicroServices.RacetrackSettings.Integration.Tests.Nancy
             Browser browser = CreateBrowser();
             IRacetrackSettingsForResponse expected = CreateItem(browser);
 
-            expected.ColonyId = 11;
+            expected.ColonyId = Guid.Parse("00000000-0000-0000-0000-000000000011");
             expected.IsPortTurnAllowed = false;
             expected.IsStarboardTurnAllowed = true;
             expected.TurnRadiusForPort = 1234.0;
@@ -210,7 +210,7 @@ namespace Selkie.Web.MicroServices.RacetrackSettings.Integration.Tests.Nancy
             Browser browser = CreateBrowser();
             IRacetrackSettingsForResponse expected = CreateItem(browser);
 
-            expected.ColonyId = 1;
+            expected.ColonyId = Guid.Parse("00000000-0000-0000-0000-000000000001");
             expected.IsPortTurnAllowed = true;
             expected.IsStarboardTurnAllowed = false;
             expected.TurnRadiusForPort = 123.0;

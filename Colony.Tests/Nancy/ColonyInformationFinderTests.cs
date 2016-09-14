@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
 using NSubstitute;
@@ -17,9 +18,6 @@ namespace Selkie.Web.MicroServices.Nancy.Colony.Tests
         : InformationFinderBaseTests
               <IColonyForResponse, IColony, IColonyRepository, IColonyInformationFinder>
     {
-        private static int NextIdForResponse;
-        private static int NextIdForEntity;
-
         protected override IColonyRepository CreateRepository()
         {
             return Substitute.For <IColonyRepository>();
@@ -35,7 +33,7 @@ namespace Selkie.Web.MicroServices.Nancy.Colony.Tests
         {
             return new ColonyForResponse
                    {
-                       ColonyId = NextIdForResponse++
+                       ColonyId = Guid.NewGuid()
                    };
         }
 
@@ -43,7 +41,7 @@ namespace Selkie.Web.MicroServices.Nancy.Colony.Tests
         {
             return new MicroServices.Colony.DataAccess.Colony
                    {
-                       ColonyId = NextIdForEntity++
+                       ColonyId = Guid.NewGuid()
                    };
         }
 

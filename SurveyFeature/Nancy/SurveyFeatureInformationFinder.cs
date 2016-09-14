@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
 using Selkie.Web.MicroServices.SurveyFeature.Interfaces.DataAccess;
@@ -17,7 +18,7 @@ namespace Selkie.Web.MicroServices.SurveyFeature.Nancy
 
         private readonly ISurveyFeatureRepository m_Repository;
 
-        public ISurveyFeatureForResponse FindById(int id)
+        public ISurveyFeatureForResponse FindById(Guid id)
         {
             ISurveyFeature entity = m_Repository.FindById(id);
 
@@ -57,7 +58,7 @@ namespace Selkie.Web.MicroServices.SurveyFeature.Nancy
                    };
         }
 
-        public ISurveyFeatureForResponse Delete(int id)
+        public ISurveyFeatureForResponse Delete(Guid id)
         {
             ISurveyFeature entity = m_Repository.FindById(id);
 

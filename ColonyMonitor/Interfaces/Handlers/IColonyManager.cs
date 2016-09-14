@@ -1,11 +1,12 @@
 ﻿using JetBrains.Annotations;
-using Selkie.MicroServices.ColonyMonitor.Dtos;
 using Selkie.Services.Aco.Common.Messages;
+using Selkie.Web.MicroServices.ColonyMonitor.Dtos;
 
-namespace Selkie.MicroServices.ColonyMonitor.Interfaces.Handlers
+namespace Selkie.Web.MicroServices.ColonyMonitor.Interfaces.Handlers
 {
     public interface IColonyManager
     {
         ColonyDto Create([NotNull] CreateColonyMessage message);
+        void Created(CreatedColonyMessage message);
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using NSubstitute;
 using NUnit.Framework;
 using Selkie.Web.MicroServices.ColonySettings.Interfaces.Nancy;
@@ -12,8 +13,6 @@ namespace Selkie.Web.MicroServices.ColonySettings.Tests.Nancy
     internal sealed class ColonySettingsRequestHandlerTests
         : RequestHandlerBaseTests <IColonySettingsForResponse, IColonySettingsInformationFinder, IColonyRequestHandler>
     {
-        private static int NextIdForResponse;
-
         protected override IColonySettingsInformationFinder CreateFinder()
         {
             return Substitute.For <IColonySettingsInformationFinder>();
@@ -28,7 +27,7 @@ namespace Selkie.Web.MicroServices.ColonySettings.Tests.Nancy
         {
             return new ColonySettingsForResponse
                    {
-                       ColonySettingsId = NextIdForResponse++
+                       ColonySettingsId = Guid.NewGuid()
                    };
         }
     }

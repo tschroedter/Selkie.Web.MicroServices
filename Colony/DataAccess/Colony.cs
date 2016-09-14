@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Selkie.Web.MicroServices.Colony.Interfaces.DataAccess;
 
@@ -8,12 +9,13 @@ namespace Selkie.Web.MicroServices.Colony.DataAccess
     {
         public Colony()
         {
+            ColonyId = Guid.Empty;
             Description = string.Empty;
             Status = ColonyProgress.Status.Unknown;
         }
 
         [Key]
-        public int ColonyId { get; set; }
+        public Guid ColonyId { get; set; }
 
         [Required]
         public string Description { get; set; }
@@ -22,7 +24,7 @@ namespace Selkie.Web.MicroServices.Colony.DataAccess
         public ColonyProgress.Status Status { get; set; }
 
         [NotMapped]
-        public int Id
+        public Guid Id
         {
             get
             {

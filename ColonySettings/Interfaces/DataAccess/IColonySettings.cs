@@ -1,4 +1,5 @@
-﻿using Selkie.Web.MicroServices.Common.Interfaces;
+﻿using System;
+using Selkie.Web.MicroServices.Common.Interfaces;
 
 namespace Selkie.Web.MicroServices.ColonySettings.Interfaces.DataAccess
 {
@@ -8,7 +9,7 @@ namespace Selkie.Web.MicroServices.ColonySettings.Interfaces.DataAccess
         int[] CostPerFeature { get; set; }
         int FixedStartNode { get; set; }
         bool IsFixedStartNode { get; set; }
-        int ColonyId { get; set; }
-        int ColonySettingsId { get; set; }
+        Guid ColonyId { get; set; }
+        Guid ColonySettingsId { get; set; }
     }
 }

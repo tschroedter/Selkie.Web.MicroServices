@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using System;
+using JetBrains.Annotations;
 using Nancy;
 using Nancy.ModelBinding;
 using Selkie.Web.MicroServices.Colony.Interfaces.Nancy;
@@ -16,8 +17,8 @@ namespace Selkie.Web.MicroServices.Colony.Nancy
             Get [ "/" ] =
                 parameters => handler.List();
 
-            Get [ "/{id:int}" ] =
-                parameters => handler.FindById(( int ) parameters.id);
+            Get [ "/{id:Guid}" ] =
+                parameters => handler.FindById(( Guid ) parameters.id);
 
             Post [ "/" ] =
                 parameters => handler.Save(this.Bind <ColonyForResponse>());
@@ -25,8 +26,8 @@ namespace Selkie.Web.MicroServices.Colony.Nancy
             Put [ "/" ] =
                 parameters => handler.Save(this.Bind <ColonyForResponse>());
 
-            Delete [ "/{id:int}" ] =
-                parameters => handler.DeleteById(( int ) parameters.id);
+            Delete [ "/{id:Guid}" ] =
+                parameters => handler.DeleteById(( Guid ) parameters.id);
         }
     }
 }

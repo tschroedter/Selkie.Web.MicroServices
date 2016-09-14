@@ -1,5 +1,8 @@
-namespace Selkie.MicroServices.ColonyMonitor.Dtos
+using System.Diagnostics.CodeAnalysis;
+
+namespace Selkie.Web.MicroServices.ColonyMonitor.Dtos
 {
+    [ExcludeFromCodeCoverage]
     public static class ColonyProgress
     {
         public enum Status

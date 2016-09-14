@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Diagnostics.CodeAnalysis;
 using Selkie.Web.MicroServices.RacetrackSettings.Interfaces.DataAccess;
@@ -19,7 +20,7 @@ namespace Selkie.Web.MicroServices.RacetrackSettings.DataAccess
         internal const double DefaultTurnRadius = 30.0;
 
         [Required]
-        public int ColonyId { get; set; }
+        public Guid ColonyId { get; set; }
 
         [Required]
         public bool IsPortTurnAllowed { get; set; }
@@ -28,7 +29,7 @@ namespace Selkie.Web.MicroServices.RacetrackSettings.DataAccess
         public bool IsStarboardTurnAllowed { get; set; }
 
         [Key]
-        public int RacetrackSettingsId { get; set; }
+        public Guid RacetrackSettingsId { get; set; }
 
         [Required]
         public double TurnRadiusForPort { get; set; }
@@ -37,7 +38,7 @@ namespace Selkie.Web.MicroServices.RacetrackSettings.DataAccess
         public double TurnRadiusForStarboard { get; set; }
 
         [NotMapped]
-        public int Id
+        public Guid Id
         {
             get
             {

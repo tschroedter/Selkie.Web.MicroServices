@@ -1,4 +1,4 @@
-﻿using System.Data.Entity;
+﻿using System;
 using System.Linq;
 using Castle.Core;
 using JetBrains.Annotations;
@@ -28,23 +28,19 @@ namespace Selkie.Web.MicroServices.Common
             }
         }
 
-        public TType FindById(int id)
+        public TType FindById(Guid id)
         {
             return Context.Find(id);
         }
 
         public void Save(TType instance)
         {
-            if ( instance.Id == default ( int ) )
+            if ( instance.Id == default ( Guid ) )
             {
-                Context.Add(instance);
-            }
-            else
-            {
-                Context.SetStateForEntity(instance,
-                                          EntityState.Modified);
+                instance.Id = Guid.NewGuid();
             }
 
+            Context.AddOrUpdate(instance);
             Context.SaveChanges();
         }
 

@@ -1,4 +1,6 @@
-﻿namespace Selkie.MicroServices.ColonyMonitor.Dtos
+﻿using System;
+
+namespace Selkie.Web.MicroServices.ColonyMonitor.Dtos
 {
     public sealed class ColonySettingsDto
     {
@@ -6,7 +8,7 @@
         public int[] CostPerFeature { get; set; }
         public int FixedStartNode { get; set; }
         public bool IsFixedStartNode { get; set; }
-        public int ColonyId { get; set; }
-        public int ColonySettingsId { get; set; }
+        public Guid ColonyId { get; set; }
+        public Guid ColonySettingsId { get; set; }
     }
 }

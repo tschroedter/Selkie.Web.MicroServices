@@ -1,10 +1,10 @@
 using System.Configuration;
 using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
-using Selkie.MicroServices.ColonyMonitor.Interfaces;
+using Selkie.Web.MicroServices.ColonyMonitor.Interfaces;
 using Selkie.Windsor;
 
-namespace Selkie.MicroServices.ColonyMonitor
+namespace Selkie.Web.MicroServices.ColonyMonitor
 {
     [ExcludeFromCodeCoverage]
     [ProjectComponent(Lifestyle.Singleton)]

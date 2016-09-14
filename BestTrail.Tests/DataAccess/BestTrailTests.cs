@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using NUnit.Framework;
@@ -48,13 +49,14 @@ namespace Selkie.Web.MicroServices.BestTrail.Tests.DataAccess
         public void Id_ReturnsBestTrailId_WhenCalled()
         {
             // Arrange
+            Guid expected = Guid.Parse("00000000-0000-0000-0000-000000000123");
             var sut = new BestTrail.DataAccess.BestTrail();
 
             // Act
-            sut.BestTrailId = 123;
+            sut.BestTrailId = expected;
 
             // Assert
-            Assert.AreEqual(123,
+            Assert.AreEqual(expected,
                             sut.Id);
         }
 
@@ -62,13 +64,14 @@ namespace Selkie.Web.MicroServices.BestTrail.Tests.DataAccess
         public void Id_SetsBestTrailId_WhenCalled()
         {
             // Arrange
+            Guid expected = Guid.Parse("00000000-0000-0000-0000-000000000123");
             var sut = new BestTrail.DataAccess.BestTrail();
 
             // Act
-            sut.Id = 123;
+            sut.Id = expected;
 
             // Assert
-            Assert.AreEqual(123,
+            Assert.AreEqual(expected,
                             sut.BestTrailId);
         }
 

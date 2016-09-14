@@ -86,7 +86,7 @@ namespace Selkie.Web.MicroServices.Colony.Tests.Integration.Nancy
         {
             var model = new ColonyForResponse
                         {
-                            ColonyId = 0,
+                            ColonyId = Guid.Empty,
                             Description = "PutTest",
                             Status = "Created"
                         };

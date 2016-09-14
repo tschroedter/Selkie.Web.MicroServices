@@ -24,7 +24,7 @@ namespace Selkie.Web.MicroServices.BestTrail.Integration.Tests.Nancy
             DeleteAllItems();
         }
 
-        private const string BasePath = "/besttrail/";
+        private const string BasePath = "/besttrails/";
 
         private static readonly IBestTrailRepository m_Repository = new BestTrailRepository(new BestTrailContext());
 
@@ -49,8 +49,8 @@ namespace Selkie.Web.MicroServices.BestTrail.Integration.Tests.Nancy
             return browser;
         }
 
-        private void AssertColony(IBestTrailForResponse expected,
-                                  IBestTrailForResponse actual)
+        private void AssertBestTrail(IBestTrailForResponse expected,
+                                     IBestTrailForResponse actual)
         {
             Console.WriteLine("Comparing BestTrails with id {0} and {1}...",
                               expected.BestTrailId,
@@ -113,7 +113,7 @@ namespace Selkie.Web.MicroServices.BestTrail.Integration.Tests.Nancy
                         {
                             Alpha = 1.0,
                             Beta = 2.0,
-                            ColonyId = 3,
+                            ColonyId = Guid.Parse("00000000-0000-0000-0000-000000000003"),
                             Gamma = 4.0,
                             Iteration = 5,
                             Length = 6,
@@ -137,7 +137,7 @@ namespace Selkie.Web.MicroServices.BestTrail.Integration.Tests.Nancy
 
             expected.Alpha = 11.0;
             expected.Beta = 22.0;
-            expected.ColonyId = 3;
+            expected.ColonyId = Guid.Parse("00000000-0000-0000-0000-000000000003");
             expected.Gamma = 44.0;
             expected.Iteration = 5;
             expected.Length = 6;
@@ -158,8 +158,8 @@ namespace Selkie.Web.MicroServices.BestTrail.Integration.Tests.Nancy
             var actual = result.Body.DeserializeJson <BestTrailForResponse>();
 
             // Then
-            AssertColony(expected,
-                         actual);
+            AssertBestTrail(expected,
+                            actual);
         }
 
         [Test]
@@ -179,8 +179,8 @@ namespace Selkie.Web.MicroServices.BestTrail.Integration.Tests.Nancy
             var actual = result.Body.DeserializeJson <BestTrailForResponse>();
 
             // Then
-            AssertColony(expected,
-                         actual);
+            AssertBestTrail(expected,
+                            actual);
         }
 
         [Test]
@@ -200,8 +200,8 @@ namespace Selkie.Web.MicroServices.BestTrail.Integration.Tests.Nancy
             var actual = result.Body.DeserializeJson <BestTrailForResponse>();
 
             // Then
-            AssertColony(expected,
-                         actual);
+            AssertBestTrail(expected,
+                            actual);
         }
 
         [Test]
@@ -236,7 +236,7 @@ namespace Selkie.Web.MicroServices.BestTrail.Integration.Tests.Nancy
 
             expected.Alpha = 1.0;
             expected.Beta = 3.0;
-            expected.ColonyId = 4;
+            expected.ColonyId = Guid.Parse("00000000-0000-0000-0000-000000000004");
             expected.Gamma = 5.0;
             expected.Iteration = 6;
             expected.Length = 7;

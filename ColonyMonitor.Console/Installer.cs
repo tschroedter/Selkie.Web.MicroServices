@@ -11,7 +11,7 @@ namespace Selkie.MicroServices.ColonyMonitor.Console
     {
         public override string GetPrefixOfDllsToInstall()
         {
-            return "Selkie.";
+            return "Selkie";
         }
     }
 }

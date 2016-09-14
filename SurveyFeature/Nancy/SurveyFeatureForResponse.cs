@@ -1,4 +1,5 @@
-﻿using Selkie.Web.MicroServices.SurveyFeature.Interfaces.Nancy;
+﻿using System;
+using Selkie.Web.MicroServices.SurveyFeature.Interfaces.Nancy;
 
 namespace Selkie.Web.MicroServices.SurveyFeature.Nancy
 {
@@ -19,7 +20,7 @@ namespace Selkie.Web.MicroServices.SurveyFeature.Nancy
 
         public double AngleToXAxisAtStartPoint { get; set; }
 
-        public int ColonyId { get; set; }
+        public Guid ColonyId { get; set; }
 
         public double EndPointX { get; set; }
 
@@ -35,9 +36,9 @@ namespace Selkie.Web.MicroServices.SurveyFeature.Nancy
 
         public double StartPointY { get; set; }
 
-        public int SurveyFeatureId { get; set; }
+        public Guid SurveyFeatureId { get; set; }
 
-        public int Id
+        public Guid Id
         {
             get
             {

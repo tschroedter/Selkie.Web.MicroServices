@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
 using NSubstitute;
@@ -15,9 +16,6 @@ namespace Selkie.Web.MicroServices.Nancy.Colony.Tests
         : InformationFinderBaseTests
               <IBestTrailForResponse, IBestTrail, IBestTrailRepository, IBestTrailInformationFinder>
     {
-        private static int NextIdForResponse;
-        private static int NextIdForEntity;
-
         protected override IBestTrailRepository CreateRepository()
         {
             return Substitute.For <IBestTrailRepository>();
@@ -32,7 +30,7 @@ namespace Selkie.Web.MicroServices.Nancy.Colony.Tests
         {
             return new BestTrailForResponse
                    {
-                       BestTrailId = NextIdForResponse++
+                       BestTrailId = Guid.NewGuid()
                    };
         }
 
@@ -40,7 +38,7 @@ namespace Selkie.Web.MicroServices.Nancy.Colony.Tests
         {
             return new BestTrail.DataAccess.BestTrail
                    {
-                       BestTrailId = NextIdForEntity++
+                       BestTrailId = Guid.NewGuid()
                    };
         }
 
@@ -51,15 +49,15 @@ namespace Selkie.Web.MicroServices.Nancy.Colony.Tests
             NUnitHelper.AssertIsEquivalent(response.Alpha,
                                            entity.Alpha,
                                            "Alpha");
-            NUnitHelper.AssertIsEquivalent(response.BestTrailId,
-                                           entity.BestTrailId,
-                                           "BestTrailId");
+            Assert.AreEqual(response.BestTrailId,
+                            entity.BestTrailId,
+                            "BestTrailId");
             NUnitHelper.AssertIsEquivalent(response.Beta,
                                            entity.Beta,
                                            "Beta");
-            NUnitHelper.AssertIsEquivalent(response.ColonyId,
-                                           entity.ColonyId,
-                                           "ColonyId");
+            Assert.AreEqual(response.ColonyId,
+                            entity.ColonyId,
+                            "ColonyId");
             NUnitHelper.AssertIsEquivalent(response.Gamma,
                                            entity.Gamma,
                                            "Gamma");

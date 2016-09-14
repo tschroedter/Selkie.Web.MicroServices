@@ -1,4 +1,5 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using NSubstitute;
 using NUnit.Framework;
 using Selkie.Web.MicroServices.BestTrail.Interfaces.Nancy;
@@ -12,8 +13,6 @@ namespace Selkie.Web.MicroServices.BestTrail.Tests.Nancy
     internal sealed class BestTrailRequestHandlerTests
         : RequestHandlerBaseTests <IBestTrailForResponse, IBestTrailInformationFinder, IBestTrailRequestHandler>
     {
-        private static int NextIdForResponse;
-
         protected override IBestTrailInformationFinder CreateFinder()
         {
             return Substitute.For <IBestTrailInformationFinder>();
@@ -28,7 +27,7 @@ namespace Selkie.Web.MicroServices.BestTrail.Tests.Nancy
         {
             return new BestTrailForResponse
                    {
-                       ColonyId = NextIdForResponse++
+                       ColonyId = Guid.NewGuid()
                    };
         }
     }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using JetBrains.Annotations;
 using Selkie.Web.MicroServices.BestTrail.Interfaces.DataAccess;
@@ -17,7 +18,7 @@ namespace Selkie.Web.MicroServices.BestTrail.Nancy
 
         private readonly IBestTrailRepository m_Repository;
 
-        public IBestTrailForResponse FindById(int id)
+        public IBestTrailForResponse FindById(Guid id)
         {
             IBestTrail entity = m_Repository.FindById(id);
 
@@ -55,7 +56,7 @@ namespace Selkie.Web.MicroServices.BestTrail.Nancy
                    };
         }
 
-        public IBestTrailForResponse Delete(int id)
+        public IBestTrailForResponse Delete(Guid id)
         {
             IBestTrail entity = m_Repository.FindById(id);
 
