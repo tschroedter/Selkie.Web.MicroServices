@@ -8,5 +8,6 @@ namespace Selkie.Web.MicroServices.ColonyMonitor.Interfaces.Handlers
     {
         ColonyDto Create([NotNull] CreateColonyMessage message);
         void Created(CreatedColonyMessage message);
+        void Finished(FinishedMessage message);
     }
 }

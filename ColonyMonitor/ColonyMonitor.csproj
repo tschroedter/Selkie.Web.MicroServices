@@ -145,6 +145,7 @@
     <Compile Include="Handlers\CostMatrixCalculateHandler.cs" />
     <Compile Include="Handlers\CreatedColonyHandler.cs" />
     <Compile Include="Handlers\CreateColonyHandler.cs" />
+    <Compile Include="Handlers\FinishedHandler.cs" />
     <Compile Include="Interfaces\Handlers\IColonyManager.cs" />
     <Compile Include="Interfaces\IBaseUrlReader.cs" />
     <Compile Include="Installer.cs" />

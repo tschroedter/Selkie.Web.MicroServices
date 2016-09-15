@@ -8,7 +8,7 @@ using Selkie.Web.MicroServices.Common.Aspects;
 
 namespace Selkie.Web.MicroServices.ColonyMonitor.Handlers
 {
-    [Interceptor(typeof( ExceptionLoggerAspect ))]
+    [Interceptor(typeof(ExceptionLoggerAspect))]
     public class CreateColonyHandler
         : SelkieMessageHandler <CreateColonyMessage>
     {

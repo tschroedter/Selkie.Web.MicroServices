@@ -88,6 +88,21 @@ namespace Selkie.MicroServices.ColonyMonitor.Tests.Entities.Manager
         [Test]
         [AutoNSubstituteData]
         public void Created_CallsRead_ForMessages(
+            [NotNull] FinishedMessage message,
+            [NotNull, Frozen] ICrudColonyDto crud,
+            [NotNull] ColonyManager sut)
+        {
+            // Arrange
+            // Act
+            sut.Finished(message);
+
+            // Assert
+            crud.Received().Read(message.ColonyId);
+        }
+
+        [Test]
+        [AutoNSubstituteData]
+        public void Created_CallsRead_ForMessages(
             [NotNull] CreatedColonyMessage message,
             [NotNull, Frozen] ICrudColonyDto crud,
             [NotNull] ColonyManager sut)
@@ -98,6 +113,27 @@ namespace Selkie.MicroServices.ColonyMonitor.Tests.Entities.Manager
 
             // Assert
             crud.Received().Read(message.ColonyId);
+        }
+
+        [Test]
+        [AutoNSubstituteData]
+        public void Finished_CallsCreateOrUpdate_ForMessages(
+            [NotNull] FinishedMessage message,
+            [NotNull] ColonyDto dto,
+            [NotNull, Frozen] ICrudColonyDto crud,
+            [NotNull] ColonyManager sut)
+        {
+            // Arrange
+            crud.Read(Arg.Any <Guid>()).Returns(dto);
+
+            // Act
+            sut.Finished(message);
+
+            // Assert
+            crud.Received().CreateOrUpdate(Arg.Is <ColonyDto>(x =>
+                                                              x.ColonyId == dto.ColonyId &&
+                                                              x.Description == dto.Description &&
+                                                              x.Status == ColonyProgress.Status.Finished));
         }
     }
 }

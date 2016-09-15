@@ -136,6 +136,7 @@
     <Compile Include="Handlers\CostMatrixCalculateHandlerTests.cs" />
     <Compile Include="Handlers\CreateColonyHandlerTests.cs" />
     <Compile Include="Handlers\CreatedColonyHandlerTests.cs" />
+    <Compile Include="Handlers\FinishedHandlerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

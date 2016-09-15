@@ -1,4 +1,5 @@
-﻿using JetBrains.Annotations;
+﻿using System;
+using JetBrains.Annotations;
 using Selkie.Services.Aco.Common.Messages;
 using Selkie.Web.MicroServices.ColonyMonitor.Dtos;
 using Selkie.Web.MicroServices.ColonyMonitor.Entities.Crud;
@@ -31,9 +32,23 @@ namespace Selkie.Web.MicroServices.ColonyMonitor.Entities.Manager
 
         public void Created(CreatedColonyMessage message)
         {
-            ColonyDto dto = m_Crud.Read(message.ColonyId);
+            UpdateStatus(message.ColonyId,
+                         ColonyProgress.Status.Created);
+        }
 
-            dto.Status = ColonyProgress.Status.Created;
+        public void Finished(FinishedMessage message)
+        {
+            UpdateStatus(message.ColonyId,
+                         ColonyProgress.Status.Finished);
+        }
+
+        private void UpdateStatus(
+            Guid colonyId,
+            ColonyProgress.Status status)
+        {
+            ColonyDto dto = m_Crud.Read(colonyId);
+
+            dto.Status = status;
 
             m_Crud.CreateOrUpdate(dto);
         }
