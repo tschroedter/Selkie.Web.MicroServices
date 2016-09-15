@@ -137,6 +137,9 @@
     <Compile Include="Handlers\CreateColonyHandlerTests.cs" />
     <Compile Include="Handlers\CreatedColonyHandlerTests.cs" />
     <Compile Include="Handlers\FinishedHandlerTests.cs" />
+    <Compile Include="Handlers\StartedHandlerTests.cs" />
+    <Compile Include="Handlers\StartHandlerTests.cs" />
+    <Compile Include="Handlers\StopHandlerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

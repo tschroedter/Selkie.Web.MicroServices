@@ -11,14 +11,14 @@ using Selkie.Web.MicroServices.ColonyMonitor.Interfaces.Handlers;
 namespace Selkie.MicroServices.ColonyMonitor.Tests.Handlers
 {
     [TestFixture]
-    internal sealed class CreatedColonyHandlerTests
+    internal sealed class StopHandlerTests
     {
         [Theory]
         [AutoNSubstituteData]
         public void Handle_CallsUpdateStatus_WhenCalled(
             [NotNull, Frozen] IColonyManager manager,
-            [NotNull] CreatedColonyMessage message,
-            [NotNull] CreatedColonyHandler sut)
+            [NotNull] StopRequestMessage message,
+            [NotNull] StopHandler sut)
         {
             // Arrange
             // Act
@@ -26,7 +26,7 @@ namespace Selkie.MicroServices.ColonyMonitor.Tests.Handlers
 
             // Assert
             manager.Received().UpdateStatus(message.ColonyId,
-                                            ColonyProgress.Status.Created);
+                                            ColonyProgress.Status.Stopping);
         }
 
         [Test]
@@ -36,7 +36,7 @@ namespace Selkie.MicroServices.ColonyMonitor.Tests.Handlers
             var manager = Substitute.For <IColonyManager>();
 
             // Act
-            var sut = new CreatedColonyHandler(manager);
+            var sut = new StopHandler(manager);
 
             // Assert
             Assert.NotNull(sut);

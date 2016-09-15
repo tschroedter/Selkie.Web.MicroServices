@@ -30,19 +30,7 @@ namespace Selkie.Web.MicroServices.ColonyMonitor.Entities.Manager
             return m_Crud.CreateOrUpdate(dto);
         }
 
-        public void Created(CreatedColonyMessage message)
-        {
-            UpdateStatus(message.ColonyId,
-                         ColonyProgress.Status.Created);
-        }
-
-        public void Finished(FinishedMessage message)
-        {
-            UpdateStatus(message.ColonyId,
-                         ColonyProgress.Status.Finished);
-        }
-
-        private void UpdateStatus(
+        public void UpdateStatus(
             Guid colonyId,
             ColonyProgress.Status status)
         {
@@ -51,6 +39,12 @@ namespace Selkie.Web.MicroServices.ColonyMonitor.Entities.Manager
             dto.Status = status;
 
             m_Crud.CreateOrUpdate(dto);
+        }
+
+        public void Created(Guid colonyId)
+        {
+            UpdateStatus(colonyId,
+                         ColonyProgress.Status.Created);
         }
     }
 }

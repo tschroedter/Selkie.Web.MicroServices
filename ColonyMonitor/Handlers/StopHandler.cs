@@ -9,10 +9,10 @@ using Selkie.Web.MicroServices.Common.Aspects;
 namespace Selkie.Web.MicroServices.ColonyMonitor.Handlers
 {
     [Interceptor(typeof( ExceptionLoggerAspect ))]
-    public class FinishedHandler
-        : SelkieMessageHandler <FinishedMessage>
+    public class StopHandler
+        : SelkieMessageHandler <StopRequestMessage>
     {
-        public FinishedHandler(
+        public StopHandler(
             [NotNull] IColonyManager colonyManager)
         {
             m_ColonyManager = colonyManager;
@@ -20,10 +20,10 @@ namespace Selkie.Web.MicroServices.ColonyMonitor.Handlers
 
         private readonly IColonyManager m_ColonyManager;
 
-        public override void Handle([NotNull] FinishedMessage message)
+        public override void Handle([NotNull] StopRequestMessage message)
         {
             m_ColonyManager.UpdateStatus(message.ColonyId,
-                                         ColonyProgress.Status.Finished);
+                                         ColonyProgress.Status.Stopping);
         }
     }
 }

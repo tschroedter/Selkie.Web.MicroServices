@@ -76,7 +76,7 @@ namespace Selkie.MicroServices.ColonyMonitor.Tests.Entities.Manager
             crud.Read(Arg.Any <Guid>()).Returns(dto);
 
             // Act
-            sut.Created(message);
+            sut.Created(message.ColonyId);
 
             // Assert
             crud.Received().CreateOrUpdate(Arg.Is <ColonyDto>(x =>
@@ -87,38 +87,7 @@ namespace Selkie.MicroServices.ColonyMonitor.Tests.Entities.Manager
 
         [Test]
         [AutoNSubstituteData]
-        public void Created_CallsRead_ForMessages(
-            [NotNull] FinishedMessage message,
-            [NotNull, Frozen] ICrudColonyDto crud,
-            [NotNull] ColonyManager sut)
-        {
-            // Arrange
-            // Act
-            sut.Finished(message);
-
-            // Assert
-            crud.Received().Read(message.ColonyId);
-        }
-
-        [Test]
-        [AutoNSubstituteData]
-        public void Created_CallsRead_ForMessages(
-            [NotNull] CreatedColonyMessage message,
-            [NotNull, Frozen] ICrudColonyDto crud,
-            [NotNull] ColonyManager sut)
-        {
-            // Arrange
-            // Act
-            sut.Created(message);
-
-            // Assert
-            crud.Received().Read(message.ColonyId);
-        }
-
-        [Test]
-        [AutoNSubstituteData]
-        public void Finished_CallsCreateOrUpdate_ForMessages(
-            [NotNull] FinishedMessage message,
+        public void UpdateStatus_CallsCreateOrUpdate_ForMessages(
             [NotNull] ColonyDto dto,
             [NotNull, Frozen] ICrudColonyDto crud,
             [NotNull] ColonyManager sut)
@@ -127,13 +96,31 @@ namespace Selkie.MicroServices.ColonyMonitor.Tests.Entities.Manager
             crud.Read(Arg.Any <Guid>()).Returns(dto);
 
             // Act
-            sut.Finished(message);
+            sut.UpdateStatus(dto.ColonyId,
+                             ColonyProgress.Status.Created);
 
             // Assert
             crud.Received().CreateOrUpdate(Arg.Is <ColonyDto>(x =>
                                                               x.ColonyId == dto.ColonyId &&
                                                               x.Description == dto.Description &&
-                                                              x.Status == ColonyProgress.Status.Finished));
+                                                              x.Status == ColonyProgress.Status.Created));
+        }
+
+        [Test]
+        [AutoNSubstituteData]
+        public void UpdateStatus_CallsRead_ForMessages(
+            Guid colonyId,
+            [NotNull, Frozen] ICrudColonyDto crud,
+            [NotNull] ColonyManager sut)
+        {
+            // Arrange
+            // Act
+            sut.UpdateStatus(colonyId,
+                             ColonyProgress.Status.Created);
+
+
+            // Assert
+            crud.Received().Read(colonyId);
         }
     }
 }

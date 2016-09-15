@@ -146,6 +146,9 @@
     <Compile Include="Handlers\CreatedColonyHandler.cs" />
     <Compile Include="Handlers\CreateColonyHandler.cs" />
     <Compile Include="Handlers\FinishedHandler.cs" />
+    <Compile Include="Handlers\StartedHandler.cs" />
+    <Compile Include="Handlers\StartHandler.cs" />
+    <Compile Include="Handlers\StopHandler.cs" />
     <Compile Include="Interfaces\Handlers\IColonyManager.cs" />
     <Compile Include="Interfaces\IBaseUrlReader.cs" />
     <Compile Include="Installer.cs" />

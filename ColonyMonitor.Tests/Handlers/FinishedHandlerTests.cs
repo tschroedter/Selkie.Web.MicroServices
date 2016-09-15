@@ -4,6 +4,7 @@ using NUnit.Framework;
 using Ploeh.AutoFixture.NUnit3;
 using Selkie.NUnit.Extensions;
 using Selkie.Services.Aco.Common.Messages;
+using Selkie.Web.MicroServices.ColonyMonitor.Dtos;
 using Selkie.Web.MicroServices.ColonyMonitor.Handlers;
 using Selkie.Web.MicroServices.ColonyMonitor.Interfaces.Handlers;
 
@@ -14,7 +15,7 @@ namespace Selkie.MicroServices.ColonyMonitor.Tests.Handlers
     {
         [Theory]
         [AutoNSubstituteData]
-        public void Handle_CallsFinished_WhenCalled(
+        public void Handle_CallsUpdateStatus_WhenCalled(
             [NotNull, Frozen] IColonyManager manager,
             [NotNull] FinishedMessage message,
             [NotNull] FinishedHandler sut)
@@ -24,7 +25,8 @@ namespace Selkie.MicroServices.ColonyMonitor.Tests.Handlers
             sut.Handle(message);
 
             // Assert
-            manager.Received().Finished(message);
+            manager.Received().UpdateStatus(message.ColonyId,
+                                            ColonyProgress.Status.Finished);
         }
 
         [Test]
